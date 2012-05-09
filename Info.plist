@@ -1,0 +1,6 @@
+{
+	CFBundleIdentifier = "com.patrickkontschak.itsytheme.itsytwitter";
+	ItsyThemeName = Twitter;
+	ItsyThemeAuthor = "Patrick Kontschak";
+	ItsyThemeURL = "http://github.com/paddykontschak/twitter.itsy";
+}

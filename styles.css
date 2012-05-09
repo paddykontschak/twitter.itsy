@@ -1,0 +1,495 @@
+
+* {
+    cursor: default;
+    color: #000000;
+    font: 11px "Lucida Grande";
+}
+
+body {
+    -webkit-user-select: none;
+    background: #141414;
+    overflow-x: hidden;
+}
+
+a {
+	color: #667f96;
+	cursor: pointer;
+    text-decoration: none;
+}
+
+.btn {
+    outline: 0px;
+	margin-right: 4px;
+    padding: 2px 4px 2px 4px;
+	background: #131313;
+	border: 1px solid #ccc;
+    border-bottom: 1px solid #aaa;
+    color: #7e8a98;
+    font-weight: bold;
+    text-shadow: 0px 1px 0px rgba(255, 255, 255, .7);
+	-webkit-border-radius: 2px;
+    -webkit-box-shadow: 0px 1px 2px rgba(0,0,0,.2), 0px 1px 2px rgba(255,255,255,0.9) inset;
+    position: absolute;
+}
+
+#dvbackground {
+    position: fixed;
+    top: 0;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background: transparent;
+}
+
+#dvpanelcontainer {
+    position: fixed;
+    bottom: 0;
+    border-top: 1px solid #515151;
+    background: #F5F5F5;
+}
+
+#dvhome, #dvment, #dvmsgs, #dvsrch, #dvconv {
+	position: absolute;
+	top:0px;
+    bottom: 0px;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+/* 
+ ********* STATUS MESSAGE *********
+ */
+
+.status-row {
+	clear: both;
+	padding: 2px 4px 2px 4px;
+	background: -webkit-gradient(linear, left top, left bottom, from(#fafafa), to(#f7f7f7));
+	border-top: 1px solid #fefefe;
+    border-bottom: 1px solid #ececec;
+    position: relative;
+    margin-right: -8px;
+}
+
+.status-row:hover .statusactions {
+	visibility: visible;
+}
+
+.status-row:hover .timestamp {
+	visibility: hidden;
+}
+
+.status-row.favorite .favicon {
+	display: block;
+}
+
+.avatar {
+	margin: 8px;
+    float: left;
+}
+
+.avatar img {
+	height: 40px;
+    width: 40px;
+    -webkit-border-radius: 3px;
+}
+
+.status {
+	position: relative; /* so text selection highlight stays within status */
+    margin-left: 54px;
+    margin-right: 40px;
+    padding: 2px 4px 4px 4px;
+    word-wrap: break-word;
+    -webkit-user-select: text;
+    color: #000000;
+    font-size: 11px;
+}
+
+.status-row.mention {
+    background: -webkit-gradient(linear, left top, left bottom, from(#faf9e0), to(#f6f5dc));
+    border-top: 1px solid #fefde4;
+    border-bottom: 1px solid #edecd3;
+}
+
+.screenName {
+	height: 14px; /* matches height of favicon */
+	font-size: 16px;
+    padding-top: 1px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 76px;
+}
+
+.screenName a {
+   	color: #000000;
+    font-weight: bold;
+}
+
+.inlineImage {
+    width: 97%;
+	padding: 14px 4px 4px;
+	border: 1px solid #373741;
+	-webkit-border-radius: 5px;
+	-webkit-box-shadow: 1px 1px 0 #54545b, -1px -1px 0 #54545b, 1px -1px 0 #54545b, -1px 1px 0 #54545b, inset 0 10px 0 #151519;;
+	display: block;
+	clear: both;
+	margin-top: 10px;
+	cursor: pointer;
+	background: #000000;
+}
+
+.statusfooter {
+	clear: both;
+	height: 24px; /* 16 for buttons + 8 top and bottom padding */
+	margin-bottom: 4px;
+}
+
+.timestamp, .timestamp a {
+	margin-left: 3px;
+	padding: 4px 0px;
+    white-space: nowrap;
+	color: #adadad;
+	position: absolute;
+	top: 2px;
+	right: 8px;
+}
+
+.retweetedByline, .retweetedByline a {
+	padding: 4px 0px;
+    white-space: nowrap;
+	color: #b1b4bd;
+    font-size: small;
+}
+
+.retweetedByline {
+	position: absolute;
+	top:2px;
+	left:80px;
+	clear: both;
+	padding: 5px 0px 0px 0px;
+	margin-left: 56px;
+	min-width: 30px;
+}
+
+.statusactions {
+	position: absolute;
+	top: 0px;
+	right: 10px;
+    padding: 4px 0px;
+	visibility: hidden; /* visible on .status-row:hover */
+	-webkit-transition: all 0.1s ease-in-out;
+	transition: all 0.1s ease-in-out;
+}
+
+.favicon {
+	position: absolute;
+	top:-3px;
+	right:-36px;
+    width: 23px;
+    height: 23px;
+    background: url(toolbar.png) -304px -12px no-repeat;
+	display: none; /* display:block on .status-row.favorite */
+}
+
+.del, .dm, .fav, .reply, .rt, .conv {
+	float: right;
+    margin-right: 4px;
+    width: 18px;
+    height: 18px;
+    cursor: default;
+    background: url(toolbar.png) no-repeat;
+    opacity: 0.5;
+}
+
+.del          { background-position: -139px -115px;}
+.del:hover    { opacity: 1;}
+.dm           { background-position: -118px -115px;}
+.dm:hover     { opacity: 1;}
+.fav          { background-position: -97px -115px;}
+.fav:hover    { opacity: 1;}
+.reply        { background-position: -69px -115px;}
+.reply:hover  { opacity: 1;}
+.rt           { background-position: -44px -115px;}
+.rt:hover     { opacity: 1;}
+.conv         { background-position: -24px -115px;}
+.conv:hover   { opacity: 1;}
+
+/* 
+ ********* CONVERSATION *********
+ */
+ 
+.convloading {
+	padding: 4px;
+    white-space: nowrap;
+	color: #888;
+    text-shadow: 0px 1px 0px rgba(255, 255, 255, .3);
+    font-weight: bold;
+}
+
+/* 
+ ********* SEARCH *********
+ */
+
+#dvsearchbox {
+    text-align: center;
+    height: 43px;
+    border-top: 1px solid #E3E3E3;
+    border-bottom: 1px solid #636363;
+    background: -webkit-gradient(linear, 0 top, 0 bottom, from(#CFCFCF), to(#A7A7A7));
+}
+
+#insearchbox {
+	width: 94%;
+    margin-top: 8px;
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 26px;
+    outline: 0px;
+    -webkit-appearance: none;
+    border: 1px solid #898989;
+    background: -webkit-gradient(linear, 0 top, 0 bottom, from(#E9E9E9), to(#ffffff));
+    -webkit-border-radius: 20px;
+    box-shadow: 0 1px 0 #D7D7D7;
+}
+
+#dvsearchresults {
+    position: absolute;
+    top: 30px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+/* 
+ ********* TOOLBAR *********
+ */
+
+#dvtoolbar {
+    padding: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    margin-bottom: 2px;
+    min-width: 215px;
+}
+
+#dvcaret {
+    position: fixed;
+    top: 6px;
+    width: 35px;
+    height: 35px;
+    background: url(toolbar.png) -261px 10px no-repeat;
+}
+
+#bnhome, #bnment, #bnmsgs, #bnsrch, #bntogg {
+    width: 35px;
+    height: 35px;
+    float: left;
+    margin-right: 10px;
+    background: url(toolbar.png) no-repeat;
+}
+#bntogg {
+	float:right;
+    margin-right: 0px;
+}
+.unlit#bnhome { background-position: -10px  -6px; }
+.unlit#bnhome:active { background-position: -10px  -44px; }
+.unlit#bnment { background-position: -52px  -6px; }
+.unlit#bnment:active { background-position: -52px  -44px; }
+.unlit#bnmsgs { background-position: -104px  -6px; }
+.unlit#bnmsgs:active { background-position: -104px  -44px; }
+.lit#bnhome   { background-position: -10px  -44px; }
+.lit#bnment   { background-position: -52px  -44px; }
+.lit#bnmsgs   { background-position: -104px -44px; }
+#bnsrch { background-position:  -156px -6px; }
+#bnsrch:active { background-position:  -156px -44px; }
+#bntogg { background-position:  -208px -6px; }
+#bntogg:active { background-position:  -208px -44px; }
+
+/* 
+ ********* UPDATE AREA *********
+ */
+
+#dvupdatearea {
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    height: 134px;
+    display: none;
+    background: -webkit-gradient(linear, left top, left bottom, from(#141414), to(#131313), color-stop(.7,#252525));
+    -webkit-border-radius: 0 0 20px 20px;
+}
+
+#taupdatearea {
+    width: 100%;
+    height: 88px;
+    opacity: 1;
+    margin-bottom: 27px;
+    padding: 12px;
+    background: -webkit-gradient(linear, left top, left bottom, from(#fdfdfd), to(#ededed));
+    outline: 0px;
+    border: 0;
+    color: #000000;
+    border-bottom: 1px solid #000000;
+    -webkit-box-shadow: 0 1px 0 #515151;
+    -webkit-border-radius: 8px 8px 0 0;
+}
+
+#taupdatearea::-webkit-scrollbar {
+    width: 6px;
+}
+
+#taupdatearea::-webkit-scrollbar-thumb:vertical {
+    height: 30px;
+    border: 0px;
+    background: rgba(0,0,0,.2);
+    -webkit-border-radius: 3px;
+}
+
+#spupdatecount {
+	position: absolute;
+	bottom: 16px;
+	right: 84px;
+	font-weight: bold;
+	text-align: center;
+	color: #707276;
+}
+
+#bnshorten {
+	position: absolute;
+	bottom: 10px;
+	left: 10px;
+	width: 46px;
+	height: 19px;
+	font-weight: bold;
+	text-align: center;
+	padding: 3px 10px;
+    color: #707276;
+	border-top: 1px solid #101010;
+	border-left: 1px solid #121212;
+	border-right: 1px solid #121212;
+	border-bottom: 1px solid #292929;
+	background: url(toolbar.png) -183px -109px no-repeat;
+	-webkit-border-radius: 3px 3px 5px 5px;
+}
+
+#bnshorten:active {
+	opacity: .7;
+}
+
+#bnupdate {
+	position: absolute;
+	bottom: 10px;
+	right: 6px;
+	width: 56px;
+	height: 19px;
+	line-height: 19px;
+	font-size: 12px;
+	color: #ffffff;
+	font-weight: 100;
+	text-shadow: 0 -1px 0 #0058b2, -1px 0 0 #40a3f3;
+	text-align: center;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#0099ff), to(#004cff));
+	border-top: 1px solid #6fc5fd;
+	border-left: 1px solid #0085f0;
+	border-right: 1px solid #0085f0;
+	border-bottom: 1px solid #004cff;
+	-webkit-border-radius: 4px;
+	-webkit-box-shadow: 1px 1px 6px #251b7a, -1px -1px 6px #251b7a, -1px 1px 6px #251b7a, 1px -1px 6px #251b7a;
+}
+
+#bnupdate:active {
+	opacity: .7;
+}
+
+/* 
+ ********* MSG *********
+ */
+
+#dvmsg, #dvconfirmrt, #dvconfirmdelete {
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    height: 61px;
+    padding: 50px 20px 20px 105px;
+    color: #000000;
+    text-align: center;
+    background: #ededed url(itsyicon.png) 5px 5px no-repeat;
+    -webkit-box-shadow: 0 0 25px 0 #444444;
+}
+
+#bnconfirmrtyes,
+#bnconfirmrtno,
+#bnconfirmdeleteyes,
+#bnconfirmdeleteno {
+	position: absolute;
+	bottom: 18px;
+	right: 120px;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FCFCFC), to(#FFFFFF), color-stop(.3,#F1F1F1),color-stop(.4,#E7E7E7),color-stop(.6,#E7E7E7),color-stop(.7,#F5F5F5));
+	-webkit-border-radius: 50px;
+	color: #000000;
+	width: 64px;
+	height: 16px;
+	font-size: 14px;
+	font-weight: 100;
+	padding: 2px 8px 2px 8px;
+	border: 1px solid #4e4e4e;
+	-webkit-box-shadow: 0px 1px 1px #b5b5b5;
+}
+
+#bnconfirmrtyes,
+#bnconfirmdeleteyes {
+	right: 20px;
+}
+
+#bnconfirmrtyes:active,
+#bnconfirmrtno:active,
+#bnconfirmdeleteyes:active,
+#bnconfirmdeleteno:active {
+	border-top: 1px solid #320c99;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#C6DAF3), to(#C3F6FF), color-stop(.3,#C6DAF3),color-stop(.4,#73B3F0));
+}
+
+/* 
+ ********* SCROLLBAR *********
+ */
+
+::-webkit-scrollbar {
+	position: absolute;
+	width: 8px;
+	background: transparent;
+}
+
+::-webkit-scrollbar-button:start:decrement {
+	display: block;
+	height: 5px;
+	width: 5px;
+	background-color: transparent;
+}
+
+::-webkit-scrollbar-button:end:increment {
+	display: block;
+	height: 5px;
+	width: 5px;
+	background-color: transparent;
+}
+
+::-webkit-scrollbar-track:enabled {
+	background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+	min-height: 17px;
+	width: 8px;
+	background-color: rgba(55, 55, 55, .2);
+	-webkit-border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:vertical:hover {
+	background-color: rgba(55, 55, 55, .4);
+}
